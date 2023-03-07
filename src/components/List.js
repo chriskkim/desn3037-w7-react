@@ -3,48 +3,68 @@ import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
-import InboxIcon from '@mui/icons-material/Inbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
 import { Button, TextField } from '@mui/material';
+
+import { useSelector, useDispatch } from 'react-redux'
+import {
+    define as reducerDefine,
+    add as reducerAdd,
+    remove as reducerRemove
+} from '../redux/list'
 
 export default function BasicList() {
 
-    function add(){
+    const field = useSelector((state) => state.list.field);
+    const items = useSelector((state) => state.list.items);
 
-        alert("You are adding!");
+    const dispatch = useDispatch();
+
+    function add() {
+
+        dispatch(reducerAdd(field))
 
     }
 
-    function remove(){
+    function remove(index) {
 
-        alert("You are removing!");
+        dispatch(reducerRemove(index))
 
     }
 
+    function define(value) {
 
-  return (
-    <Box sx={{ width: '100%', maxWidth: "100%", bgcolor: 'background.paper' }}>
+        dispatch(reducerDefine(value))
 
-        <TextField label="Name" variant="outlined" sx={{width: "100%", marginBottom: 1}} />
-        <Button variant="contained" sx={{width: "100%", marginBottom: 1}} onClick={(e) => { add() }}>
-            Add
-        </Button>
+    }
 
-      <Divider />
+    return (
+        <Box sx={{ width: '100%', maxWidth: "100%", bgcolor: 'background.paper' }}>
 
-      <nav aria-label="secondary mailbox folders">
-        
-        <List>
-          <ListItem disablePadding>
-            <ListItemButton onClick={(e) => remove()}>
-              <ListItemText primary="Item #0" />
-            </ListItemButton>
-          </ListItem>
-        </List>
-      </nav>
-    </Box>
-  );
+            <TextField label="Name" variant="outlined" value={field} sx={{ width: "100%", marginBottom: 1 }} onChange={(e) => define(e.target.value)} />
+            <Button variant="contained" sx={{ width: "100%", marginBottom: 1 }} onClick={(e) => { add() }}>
+                Add
+            </Button>
+
+            <Divider />
+
+            <nav aria-label="secondary mailbox folders">
+                <List>
+
+                    {items.map((item, i) =>
+
+                        <ListItem disablePadding key={i}>
+                            <ListItemButton onClick={(e) => remove(i)}>
+                                <ListItemText primary={item} />
+                            </ListItemButton>
+                        </ListItem>
+
+                    )}
+
+
+                </List>
+            </nav>
+        </Box>
+    );
 }
