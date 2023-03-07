@@ -16,6 +16,7 @@ export default function Menu() {
                 <Tab component={Link} to="/contact" value="/contact" label="Contact" />
                 <Tab component={Link} to="/counter" value="/counter" label="Counter" />
                 <Tab component={Link} to="/form" value="/form" label="Form" />
+                <Tab component={Link} to="/list" value="/list" label="List" />
             </Tabs>
 
         </div>

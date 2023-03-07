@@ -32,9 +32,9 @@ export default function BasicTextFields() {
       noValidate
       autoComplete="off"
     >
-      <TextField label="Name" variant="outlined" defaultValue={name} onBlur={(e) => Update("name", e.target.value)} />
+      <TextField label="Name" variant="outlined" defaultValue={name} onChange={(e) => Update("name", e.target.value)} />
       <TextField label="Email" variant="outlined" defaultValue={email} onChange={(e) => Update("email", e.target.value) } />
-      <TextField label="Bio" variant="outlined" defaultValue={bio} onBlur={(e) =>  Update("bio", e.target.value)} />
+      <TextField label="Bio" variant="outlined" defaultValue={bio} onChange={(e) =>  Update("bio", e.target.value)} />
 
       <span>
 

@@ -11,6 +11,7 @@ import Clients from "./components/Clients";
 import Contact from "./components/Contact";
 import Menu from "./components/Menu";
 import InputForm from "./components/InputForm";
+import List from "./components/List";
 
 import store from './store/Store';
 import { Provider } from "react-redux";
@@ -35,6 +36,7 @@ function App() {
               <Route exact path="contact" element={<Contact />} />
               <Route exact path="counter" element={<Counter />} />
               <Route exact path="form" element={<InputForm />} />
+              <Route exact path="list" element={<List />} />
             </Routes>
           </BrowserRouter>
 
