@@ -1,8 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
-  value: 0,
+const payload = window.localStorage.getItem("payload");
+let initialState;
+
+if (payload !== "" && payload !== null) {
+
+  const payloadJSON = JSON.parse(payload);
+
+  initialState = {
+    value: payloadJSON.counter.value,
+  }
+
+} else {
+
+
+  initialState = {
+    value: 0,
+  }
+
 }
+
+
 
 export const counterSlice = createSlice({
   name: 'counter',
