@@ -31,6 +31,7 @@ function App() {
               <Menu />
             </Box>
             <Routes>
+              <Route exact path="" element={<></>} />
               <Route exact path="about" element={<About />} />
               <Route exact path="clients" element={<Clients />} />
               <Route exact path="contact" element={<Contact />} />
