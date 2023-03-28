@@ -26,7 +26,7 @@ function App() {
 
         <Container maxWidth="sm" sx={{ mt: 5 }}>
 
-          <BrowserRouter>
+          <BrowserRouter basename='/desn3037-w7-react'>
             <Box sx={{ mb: 3 }}>
               <Menu />
             </Box>
